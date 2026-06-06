@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rusdi — Mohammad Rusdianto</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
+  <style>
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: #0b0f1a;
+      color: #e8edf5;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      padding: 80px 60px 72px;
+      border-bottom: 1px solid #1a2135;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 60px;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .hero-eyebrow {
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #4a6080;
+      margin-bottom: 20px;
+    }
+    .hero-name {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(48px, 7vw, 80px);
+      font-weight: 300;
+      line-height: 1.0;
+      color: #f0f4ff;
+      margin-bottom: 8px;
+    }
+    .hero-name em { font-style: italic; color: #6b9fd4; }
+    .hero-sub {
+      font-size: 13px;
+      color: #3a5070;
+      letter-spacing: 0.5px;
+      margin-bottom: 32px;
+      font-weight: 300;
+    }
+    .hero-tagline {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #7a90aa;
+      max-width: 440px;
+      font-weight: 300;
+      margin-bottom: 40px;
+    }
+    .hero-tagline strong { color: #c8daf0; font-weight: 500; }
+    .hero-cta { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    /* ===== BUTTONS ===== */
+    .btn-primary {
+      background: #6b9fd4;
+      color: #0b0f1a;
+      border: none;
+      padding: 12px 28px;
+      font-size: 13px;
+      font-weight: 500;
+      border-radius: 3px;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.2s;
+    }
+    .btn-primary:hover { background: #88b5e0; }
+    .btn-line {
+      background: transparent;
+      color: #4a6080;
+      border: 1px solid #1e2d45;
+      padding: 12px 28px;
+      font-size: 13px;
+      border-radius: 3px;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+    .btn-line:hover { border-color: #3a5878; color: #c8daf0; }
+
+    /* ===== FOTO PROFIL ===== */
+    .photo-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+    }
+    .photo-frame {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      border: 2px solid #1e2d45;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #111827;
+    }
+
+    /*
+    =====================================================
+    CARA MENAMBAHKAN FOTO:
+    1. Siapkan foto kamu (format JPG/PNG, ukuran ideal ~400x400px)
+    2. Letakkan file foto di folder yang sama dengan file HTML ini
+    3. Ganti nama file foto menjadi "foto-rusdi.jpg" (atau sesuaikan)
+    4. Hapus tag <span class="photo-initials">R</span> di bawah
+    5. Ganti dengan: <img src="foto-rusdi.jpg" alt="Rusdi" style="width:100%;height:100%;object-fit:cover;" />
+    6. Simpan dan buka ulang di browser
+    =====================================================
+    */
+
+    .photo-initials {
+      font-family: 'Fraunces', serif;
+      font-size: 64px;
+      font-weight: 300;
+      color: #6b9fd4;
+      font-style: italic;
+      line-height: 1;
+    }
+    .photo-name {
+      font-size: 12px;
+      color: #3a5070;
+      text-align: center;
+      letter-spacing: 0.5px;
+    }
+
+    /* ===== HERO STATS ===== */
+    .hero-stats { display: flex; gap: 32px; margin-top: 36px; flex-wrap: wrap; }
+    .stat-num {
+      font-family: 'Fraunces', serif;
+      font-size: 34px;
+      color: #6b9fd4;
+      font-weight: 300;
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 10px;
+      color: #3a5070;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+
+    /* ===== SECTIONS ===== */
+    .section { padding: 72px 60px; border-bottom: 1px solid #111827; }
+    .section-label {
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #3a5070;
+      margin-bottom: 36px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: #111827;
+    }
+
+    /* ===== ABOUT ===== */
+    .about-text {
+      font-size: 15px;
+      line-height: 1.95;
+      color: #7a90aa;
+      max-width: 620px;
+      font-weight: 300;
+    }
+    .about-text strong { color: #c8daf0; font-weight: 500; }
+
+    .honest-box {
+      background: #0d1422;
+      border: 1px solid #1a2840;
+      border-left: 3px solid #6b9fd4;
+      border-radius: 4px;
+      padding: 24px 28px;
+      margin: 28px 0;
+      max-width: 600px;
+    }
+    .honest-label {
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #3a5070;
+      margin-bottom: 12px;
+    }
+    .honest-text {
+      font-size: 14px;
+      line-height: 1.85;
+      color: #5a7898;
+      font-style: italic;
+    }
+    .honest-text span { color: #6b9fd4; font-style: normal; }
+
+    .manifesto {
+      background: #0d1422;
+      border: 1px solid #1a2840;
+      border-left: 3px solid #6b9fd4;
+      border-radius: 4px;
+      padding: 28px 32px;
+      margin-top: 36px;
+      max-width: 620px;
+    }
+    .manifesto-label {
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #3a5070;
+      margin-bottom: 14px;
+    }
+    .manifesto-text {
+      font-family: 'Fraunces', serif;
+      font-size: 17px;
+      line-height: 1.8;
+      color: #c8daf0;
+      font-weight: 300;
+      font-style: italic;
+    }
+    .manifesto-text span { color: #6b9fd4; }
+
+    .badges { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 24px; }
+    .badge {
+      font-size: 11px;
+      color: #4a6080;
+      background: #0f1825;
+      border: 1px solid #1a2840;
+      padding: 5px 14px;
+      border-radius: 20px;
+    }
+
+    /* ===== ORIGIN STORY ===== */
+    .disclaimer {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      color: #3a5070;
+      background: #0f1825;
+      border: 1px solid #1a2840;
+      padding: 7px 14px;
+      border-radius: 4px;
+      margin-bottom: 32px;
+    }
+    .disclaimer i { font-size: 14px; color: #4a6080; }
+
+    .origin-timeline { display: flex; flex-direction: column; }
+    .origin-item {
+      display: grid;
+      grid-template-columns: 90px 1fr;
+      gap: 24px;
+      padding-bottom: 28px;
+    }
+    .origin-item:last-child { padding-bottom: 0; }
+    .origin-year {
+      font-size: 11px;
+      color: #3a5070;
+      letter-spacing: 1px;
+      padding-top: 3px;
+      text-align: right;
+      font-weight: 300;
+      line-height: 1.4;
+    }
+    .origin-content {
+      padding-left: 24px;
+      border-left: 1px solid #1a2840;
+      position: relative;
+    }
+    .origin-content::before {
+      content: '';
+      position: absolute;
+      left: -5px;
+      top: 7px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #1a2840;
+      box-shadow: 0 0 0 1px #2a4060;
+    }
+    .origin-content.active::before {
+      background: #6b9fd4;
+      box-shadow: 0 0 0 1px #6b9fd4;
+    }
+    .origin-title {
+      font-size: 13px;
+      font-weight: 500;
+      color: #c8daf0;
+      margin-bottom: 7px;
+    }
+    .origin-desc {
+      font-size: 12px;
+      color: #3a5878;
+      line-height: 1.75;
+    }
+    .origin-desc em { color: #4a6080; font-style: normal; }
+
+    /* ===== BISNIS CARDS ===== */
+    .bisnis-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 14px;
+    }
+    .bisnis-card {
+      background: #0f1825;
+      border: 1px solid #1a2840;
+      border-radius: 8px;
+      padding: 22px;
+      transition: border-color 0.2s;
+    }
+    .bisnis-card:hover { border-color: #2a4060; }
+    .bisnis-icon { font-size: 20px; color: #6b9fd4; margin-bottom: 14px; }
+    .bisnis-title { font-size: 14px; font-weight: 500; color: #c8daf0; margin-bottom: 7px; }
+    .bisnis-desc { font-size: 12px; color: #3a5070; line-height: 1.65; }
+    .bisnis-tag {
+      display: inline-block;
+      margin-top: 12px;
+      font-size: 10px;
+      color: #4a6080;
+      background: #111827;
+      border: 1px solid #1a2840;
+      padding: 3px 10px;
+      border-radius: 20px;
+    }
+
+    /* ===== NUMBERS ===== */
+    .numbers-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 1px;
+      background: #111827;
+      border: 1px solid #111827;
+    }
+    .num-card { background: #0b0f1a; padding: 28px 24px; }
+    .num-big {
+      font-family: 'Fraunces', serif;
+      font-size: 36px;
+      color: #6b9fd4;
+      font-weight: 300;
+      line-height: 1;
+      margin-bottom: 7px;
+    }
+    .num-label { font-size: 11px; color: #3a5070; line-height: 1.5; }
+
+    /* ===== TWO COL ===== */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+    }
+
+    /* ===== TIMELINE ===== */
+    .timeline {
+      padding-left: 22px;
+      border-left: 1px solid #1a2840;
+      display: flex;
+      flex-direction: column;
+    }
+    .tl-item { position: relative; padding-bottom: 26px; }
+    .tl-item:last-child { padding-bottom: 0; }
+    .tl-dot {
+      position: absolute;
+      left: -27px;
+      top: 6px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #6b9fd4;
+      border: 2px solid #0b0f1a;
+      box-shadow: 0 0 0 1px #6b9fd4;
+    }
+    .tl-dot.muted { background: #1a2840; box-shadow: 0 0 0 1px #1a2840; }
+    .tl-dot.future { background: #0b0f1a; box-shadow: 0 0 0 1px #3a5070; }
+    .tl-dot.vision { background: #0b0f1a; box-shadow: 0 0 0 1px #6b9fd4; }
+    .tl-phase {
+      display: inline-block;
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 2px 9px;
+      border-radius: 2px;
+      margin-bottom: 6px;
+    }
+    .tl-phase.awal    { background: #1a2840; color: #4a6080; }
+    .tl-phase.learn   { background: #152035; color: #5a7898; }
+    .tl-phase.work    { background: #1c3050; color: #6b9fd4; }
+    .tl-phase.build   { background: #6b9fd4; color: #0b0f1a; }
+    .tl-phase.rebuild { background: #2a4870; color: #88b5e0; }
+    .tl-phase.ai      { background: #1c3050; color: #6b9fd4; }
+    .tl-phase.next    { background: transparent; color: #3a5070; border: 1px solid #1a2840; }
+    .tl-phase.vision  { background: transparent; color: #6b9fd4; border: 1px solid #6b9fd4; }
+    .tl-year { font-size: 11px; color: #3a5070; letter-spacing: 1.5px; margin-bottom: 5px; }
+    .tl-title { font-size: 14px; font-weight: 500; color: #c8daf0; margin-bottom: 5px; }
+    .tl-desc { font-size: 12px; color: #3a5878; line-height: 1.7; }
+
+    /* ===== VISION ===== */
+    .vision-box {
+      background: #0d1422;
+      border: 1px solid #1a2840;
+      border-radius: 8px;
+      padding: 26px;
+      margin-bottom: 24px;
+    }
+    .vision-year {
+      font-family: 'Fraunces', serif;
+      font-size: 36px;
+      color: #6b9fd4;
+      font-weight: 300;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .vision-title { font-size: 14px; font-weight: 500; color: #c8daf0; margin-bottom: 12px; }
+    .vision-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .vision-list li {
+      font-size: 12px;
+      color: #3a5878;
+      padding-left: 18px;
+      position: relative;
+      line-height: 1.6;
+    }
+    .vision-list li::before { content: '—'; position: absolute; left: 0; color: #2a4060; }
+
+    /* ===== CONTACT ===== */
+    .contact-row { display: flex; flex-direction: column; gap: 10px; }
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 14px 18px;
+      background: #0f1825;
+      border: 1px solid #1a2840;
+      border-radius: 6px;
+      transition: border-color 0.2s;
+      text-decoration: none;
+    }
+    .contact-item:hover { border-color: #2a4060; }
+    .contact-icon { font-size: 17px; color: #6b9fd4; flex-shrink: 0; }
+    .contact-label { font-size: 10px; color: #3a5070; letter-spacing: 1px; text-transform: uppercase; }
+    .contact-value { font-size: 13px; color: #8aaac8; }
+
+    /* ===== FOOTER ===== */
+    footer {
+      padding: 32px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #080c14;
+    }
+    .footer-name {
+      font-family: 'Fraunces', serif;
+      font-size: 14px;
+      color: #2a3f58;
+      font-style: italic;
+      font-weight: 300;
+    }
+    .footer-copy { font-size: 11px; color: #1e2d45; letter-spacing: 0.5px; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .hero { padding: 60px 24px 56px; grid-template-columns: 1fr; gap: 36px; min-height: auto; }
+      .photo-wrap { flex-direction: row; justify-content: flex-start; }
+      .photo-frame { width: 80px; height: 80px; }
+      .photo-initials { font-size: 32px; }
+      .hero-stats { gap: 24px; }
+      .section { padding: 52px 24px; }
+      .two-col { grid-template-columns: 1fr; gap: 40px; }
+      .origin-item { grid-template-columns: 64px 1fr; gap: 14px; }
+      footer { padding: 24px; flex-direction: column; gap: 8px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <div class="hero-left">
+      <p class="hero-eyebrow">26 tahun · Builder · Surabaya</p>
+      <h1 class="hero-name"><em>Rusdi</em></h1>
+      <p class="hero-sub">Mohammad Rusdianto — dalam perjalanan membangun sesuatu yang besar</p>
+      <p class="hero-tagline">
+        Pemalu, takut ditolak, overthinking — tapi justru itu yang mendorong aku
+        <strong>membangun bisnis online dari nol.</strong> Karena jualan langsung? Tidak berani.
+      </p>
+      <div class="hero-cta">
+        <a href="#visi" class="btn-primary">Lihat Visi</a>
+        <a href="#origin" class="btn-line">Lihat Perjalanan</a>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="stat-num">26</div>
+          <div class="stat-label">Tahun usia</div>
+        </div>
+        <div>
+          <div class="stat-num">700+</div>
+          <div class="stat-label">Produk aktif</div>
+        </div>
+        <div>
+          <div class="stat-num">4+</div>
+          <div class="stat-label">Stream bisnis</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="photo-wrap">
+      <div class="photo-frame">
+        <!--
+          GANTI FOTO DI SINI:
+          Hapus baris <span> di bawah, ganti dengan:
+          <img src="foto-rusdi.jpg" alt="Rusdi" style="width:100%;height:100%;object-fit:cover;" />
+        -->
+        <span class="photo-initials">R</span>
+      </div>
+      <p class="photo-name">Mohammad Rusdianto</p>
+    </div>
+  </section>
+
+  <!-- ===== TENTANG SAYA ===== -->
+  <section class="section">
+    <div class="section-label">Tentang Saya</div>
+    <div class="honest-box">
+      <div class="honest-label">Jujur dari awal</div>
+      <div class="honest-text">
+        "Aku orangnya pemalu. Takut menawarkan produk secara langsung, takut ditolak, overthinking.
+        Ternyata itu yang mendorong aku ke online shop —
+        <span>karena di sana, aku tidak harus bertatap muka dulu.</span>"
+      </div>
+    </div>
+    <p class="about-text">
+      Lahir Oktober 1999 di Surabaya — di gang sempit pinggir sungai, rumah sepetak 4x4.
+      Ayahku tukang becak. Tidak ada les, tidak ada fasilitas lebih. Tapi sejak kecil aku sudah terbiasa
+      <strong>mencari jalan sendiri.</strong><br><br>
+      Di sekolah selalu bisa bersaing — ranking 3 besar dari TK sampai SMK, tanpa les,
+      bersaing langsung dengan anak guru dan anak yang les tiap hari. Dua kali sistem tidak berpihak,
+      tapi kualitas tidak pernah hilang. Lulus <strong>SMK Akuntansi 2018</strong> —
+      dan fondasi itu yang membuat sistem bisnisku bisa berjalan rapi sampai sekarang.<br><br>
+      Wajahku memang keliatan chinese — ada darah dari ayah. Tapi pergaulanku?
+      <strong>Anak Suroboyo tulen.</strong> Dua hal yang tidak pernah aku pilih,
+      tapi keduanya jadi bagian dari siapa aku.<br><br>
+      Aku bukan orang yang sudah sampai.
+      <strong>Aku sedang dalam perjalanan — dan memilih mendokumentasikannya secara jujur.</strong>
+    </p>
+    <div class="manifesto">
+      <div class="manifesto-label">Manifesto</div>
+      <div class="manifesto-text">
+        "Di usia 30, aku ingin pensiun dari bekerja — bukan dari berkarya.
+        Semua bisnis berjalan sendiri, bermanfaat untuk orang sekitar,
+        dan diwariskan ke <span>generasi berikutnya.</span>"
+      </div>
+    </div>
+    <div class="badges">
+      <span class="badge">Introvert yang terpaksa jadi builder</span>
+      <span class="badge">SMK Akuntansi</span>
+      <span class="badge">Wajah chinese, jiwa Suroboyo</span>
+      <span class="badge">Belajar dari lapangan</span>
+    </div>
+  </section>
+
+  <!-- ===== ORIGIN STORY ===== -->
+  <section class="section" id="origin">
+    <div class="section-label">Perjalanan Panjang Sebelum Ini</div>
+    <div class="disclaimer">
+      <i class="ti ti-info-circle"></i>
+      Beberapa cerita di bawah adalah masa lalu. Bukan untuk ditiru — hanya untuk diambil pelajarannya.
+    </div>
+    <div class="origin-timeline">
+
+      <div class="origin-item">
+        <div class="origin-year">~2007</div>
+        <div class="origin-content">
+          <div class="origin-title">Jualan gambar mewarnai — modal Rp5.000</div>
+          <div class="origin-desc">
+            Lihat orang jualan di depan sekolah, mau beli tapi uang tidak cukup.
+            Akhirnya minta uang ibu Rp5.000, pergi ke warnet, cari gambar di Google, print sendiri.
+            Jual 500 perak per lembar, 1.000 dapat 3. Ajak teman-teman berjualan sampai ke Taman Flora Surabaya.
+            <em>Laris — tapi teman-temannya malah ninggalin aku main bola.</em>
+          </div>
+        </div>
+      </div>
+
+      <div class="origin-item">
+        <div class="origin-year">~2008</div>
+        <div class="origin-content">
+          <div class="origin-title">Putar modal ke ikan hias & cupang</div>
+          <div class="origin-desc">
+            Hasil jualan gambar diputar ke bisnis ikan. Ikut tren ikan cupang waktu itu —
+            sampai ikut lomba adu cupang. <em>Menang.</em>
+            Surabaya waktu itu masih ada sawah, ikut teman cari ikan sendiri untuk dijual ke pasar.
+          </div>
+        </div>
+      </div>
+
+      <div class="origin-item">
+        <div class="origin-year">~2009</div>
+        <div class="origin-content">
+          <div class="origin-title">Ngamen — dan selalu dapat lebih banyak dari teman</div>
+          <div class="origin-desc">
+            Diajak teman ngamen. Teman dapat ratusan perak, aku selalu dapat ribuan.
+            Pernah sekali dapat Rp5.000, Rp10.000, bahkan toples snack.
+            <em>Sampai sekarang masih bertanya-tanya — apa karena muka china ya?</em>
+          </div>
+        </div>
+      </div>
+
+      <div class="origin-item">
+        <div class="origin-year">2012</div>
+        <div class="origin-content active">
+          <div class="origin-title">Joki game online — sebelum joki jadi profesi</div>
+          <div class="origin-desc">
+            Main PointBlank, NinjaSaga, DragonCity — tapi bukan sekadar main.
+            Jadi joki, jual cara curang, dan jual alat curangnya.
+            Nama di dunia maya waktu itu: <em>Si Agen Terpercaya / RDX SCPNT.</em>
+            Lumayan terkenal di komunitasnya. Ini sebelum joki game jadi profesi yang umum seperti sekarang.
+          </div>
+        </div>
+      </div>
+
+      <div class="origin-item">
+        <div class="origin-year">2013</div>
+        <div class="origin-content active">
+          <div class="origin-title">Dari dunia hacker — malah lihat peluang jualan topeng</div>
+          <div class="origin-desc">
+            Masuk ke komunitas hacking karena dunia joki erat dengan celah sistem.
+            Sempat belajar — tapi bukan ke sana arahnya.
+            Lihat orang posting jual topeng Anonymous, banyak yang minat.
+            Langsung ambil semua stoknya, jual kembali margin 200%.
+            Beli Rp45.000, jual Rp120.000. <em>Ketemu produsen aslinya di Kaskus.</em>
+          </div>
+        </div>
+      </div>
+
+      <div class="origin-item">
+        <div class="origin-year">2014–2015</div>
+        <div class="origin-content active">
+          <div class="origin-title">Distributor topeng wilayah Surabaya</div>
+          <div class="origin-desc">
+            Dipercaya produsen untuk handle wilayah Surabaya.
+            Semua yang cari topeng anonymous & karakter film di Surabaya larinya ke aku.
+            Ini juga awal kenal Bukalapak dan dunia online shop sungguhan.
+            Dari sini bisa beli laptop dan Android sendiri —
+            <em>yang pertama di satu gang sempit itu. Semua fomo beli juga.</em>
+          </div>
+        </div>
+      </div>
+
+      <div class="origin-item">
+        <div class="origin-year">2015–2018</div>
+        <div class="origin-content">
+          <div class="origin-title">Fokus SMA, tapi passive income tetap jalan</div>
+          <div class="origin-desc">
+            Semua bisnis sebelumnya ditinggal saat masuk SMA — terlalu banyak kegiatan dan organisasi sekolah.
+            Tapi jualan topeng masih berjalan lewat reseller. Dia jual, setor ke aku.
+            <em>Passive income pertama.</em> Baru benar-benar berhenti di kelas 3 SMA.
+          </div>
+        </div>
+      </div>
+
+      <div class="origin-item">
+        <div class="origin-year">2017–2018</div>
+        <div class="origin-content active">
+          <div class="origin-title">Ojol & kembali ke online shop</div>
+          <div class="origin-desc">
+            Sambil SMA, kerja sampingan ojol. Di saat yang sama mulai serius kembali ke online shop di Bukalapak.
+            Dua jalur sekaligus — dan ini yang jadi benih Cuan Grup.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== BISNIS ===== -->
+  <section class="section" id="bisnis">
+    <div class="section-label">Bisnis yang Sedang Dibangun</div>
+    <div class="bisnis-grid">
+      <div class="bisnis-card">
+        <div class="bisnis-icon"><i class="ti ti-building-store"></i></div>
+        <div class="bisnis-title">Cuan Grup Online Shop</div>
+        <div class="bisnis-desc">
+          Beberapa toko online, 700+ varian produk toserba.
+          Laporan harian masuk otomatis 1 klik — dikelola hampir sepenuhnya sendiri.
+        </div>
+        <span class="bisnis-tag">Aktif · Core bisnis</span>
+      </div>
+      <div class="bisnis-card">
+        <div class="bisnis-icon"><i class="ti ti-file-code"></i></div>
+        <div class="bisnis-title">Produk Digital</div>
+        <div class="bisnis-desc">
+          Dalam pipeline. Menunggu momentum yang tepat —
+          siklus bisnis sedang dibangun kembali sebelum ekspansi ke sini.
+        </div>
+        <span class="bisnis-tag">Coming soon</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ANGKA ===== -->
+  <section class="section">
+    <div class="section-label">Bisnis dalam Angka</div>
+    <div class="numbers-row">
+      <div class="num-card">
+        <div class="num-big">700+</div>
+        <div class="num-label">Varian produk aktif</div>
+      </div>
+      <div class="num-card">
+        <div class="num-big">80%</div>
+        <div class="num-label">Tingkat produk terjual</div>
+      </div>
+      <div class="num-card">
+        <div class="num-big">Rp500rb</div>
+        <div class="num-label">Modal awal 2020</div>
+      </div>
+      <div class="num-card">
+        <div class="num-big">1 klik</div>
+        <div class="num-label">Laporan harian otomatis</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TIMELINE + VISI + KONTAK ===== -->
+  <section class="section">
+    <div class="two-col">
+      <div>
+        <div class="section-label">Dari Sini ke Sana</div>
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-dot muted"></div>
+            <div class="tl-phase awal">Awal</div>
+            <div class="tl-year">1999 · Lahir</div>
+            <div class="tl-title">Surabaya, Gang Sempit Pinggir Sungai</div>
+            <div class="tl-desc">Tumbuh di keluarga sederhana. Mulai cari uang sendiri sejak usia 8 tahun.</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot muted"></div>
+            <div class="tl-phase awal">Sekolah</div>
+            <div class="tl-year">2006 – 2018</div>
+            <div class="tl-title">SD sampai SMK Akuntansi</div>
+            <div class="tl-desc">Ranking 3 besar tanpa les. Sambil jualan gambar, ikan, topeng, joki game — dan belajar online shop pertama kali.</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot muted"></div>
+            <div class="tl-phase learn">Belajar</div>
+            <div class="tl-year">2017 – 2019</div>
+            <div class="tl-title">Serius di Online Shop & Ojol</div>
+            <div class="tl-desc">Mulai fokus ke Bukalapak sambil ojol. Dua jalur sekaligus — benih awal Cuan Grup.</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot muted"></div>
+            <div class="tl-phase work">Pengalaman</div>
+            <div class="tl-year">2019 – 2020</div>
+            <div class="tl-title">Bekerja di Perusahaan Online Shop</div>
+            <div class="tl-desc">Belajar standar industri dari dalam sebelum berani jalan sendiri.</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-phase build">Usaha Sendiri</div>
+            <div class="tl-year">2020 – 2022</div>
+            <div class="tl-title">Bangun "I Want Group" dari Rp500rb</div>
+            <div class="tl-desc">Mulai berdua, modal patungan. Bangun sistem dan rekrut freelancer marketing berbasis profit.</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-phase rebuild">Rebuild</div>
+            <div class="tl-year">2022</div>
+            <div class="tl-title">Pisah Rekan → Cuan Grup</div>
+            <div class="tl-desc">Buyout rekan lama, rebranding, mulai lagi dengan sistem yang lebih matang.</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-phase ai">Digitalisasi</div>
+            <div class="tl-year">2025 – 2026</div>
+            <div class="tl-title">AI & Otomasi Terintegrasi</div>
+            <div class="tl-desc">Semua alur kerja terhubung otomatis — laporan, editing, listing, berbasis AI.</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot future"></div>
+            <div class="tl-phase next">Selanjutnya</div>
+            <div class="tl-year">2026 →</div>
+            <div class="tl-title">Scale Up & Ekspansi</div>
+            <div class="tl-desc">Kembangkan Cuan Grup, tambah stream bisnis, bangun rekanan strategis.</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot vision"></div>
+            <div class="tl-phase vision">Visi</div>
+            <div class="tl-year">2030 · Usia 30</div>
+            <div class="tl-title">Pensiun — Semua Berjalan Sendiri</div>
+            <div class="tl-desc">Ekosistem bisnis yang menghasilkan passive income, bermanfaat untuk orang sekitar, dan bisa diwariskan.</div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="section-label" id="visi">Visi 2030</div>
+        <div class="vision-box">
+          <div class="vision-year">30</div>
+          <div class="vision-title">Yang ingin aku capai sebelum usia 30</div>
+          <ul class="vision-list">
+            <li>Bisnis berjalan tanpa perlu aku kelola penuh setiap hari</li>
+            <li>Punya banyak rekanan dan stream bisnis yang saling menopang</li>
+            <li>Passive income yang cukup untuk hidup dengan tenang</li>
+            <li>Bisa memberi manfaat nyata untuk orang-orang sekitar</li>
+            <li>Diwariskan — masih berjalan untuk generasi berikutnya</li>
+            <li>Tinggal di tempat yang nyaman, asri, dan tenang</li>
+          </ul>
+        </div>
+
+        <div class="section-label" style="margin-top: 32px;">Terhubung</div>
+        <div class="contact-row" id="kontak">
+          <div class="contact-item">
+            <i class="ti ti-map-pin contact-icon"></i>
+            <div>
+              <div class="contact-label">Lokasi</div>
+              <div class="contact-value">Surabaya, Jawa Timur</div>
+            </div>
+          </div>
+          <a href="https://instagram.com/rusydi_2710" target="_blank" class="contact-item">
+            <i class="ti ti-brand-instagram contact-icon"></i>
+            <div>
+              <div class="contact-label">Instagram</div>
+              <div class="contact-value">@rusydi_2710</div>
+            </div>
+          </a>
+          <a href="https://linktr.ee/CuanGrupBusiness" target="_blank" class="contact-item">
+            <i class="ti ti-link contact-icon"></i>
+            <div>
+              <div class="contact-label">Linktree</div>
+              <div class="contact-value">linktr.ee/CuanGrupBusiness</div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="footer-name">Mohammad Rusdianto · Dalam Perjalanan</div>
+    <div class="footer-copy">© 2026 · Surabaya · Menuju 2030</div>
+  </footer>
+
+</body>
+</html>
